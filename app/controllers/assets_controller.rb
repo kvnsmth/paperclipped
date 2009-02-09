@@ -1,4 +1,5 @@
 class AssetsController < ApplicationController
+  protect_from_forgery :except => :create
   
   make_resourceful do 
     actions :all
