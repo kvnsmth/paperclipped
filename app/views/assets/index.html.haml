@@ -1,3 +1,5 @@
+- include_javascript 'prototype.ajax_upload.1.0.min.js'    
+- include_javascript 'admin/upload' 
 - include_stylesheet 'admin/assets'
 
 %h1 Assets
@@ -6,7 +8,7 @@
   Assets and images can be uploaded and then attached or inserted into pages, snippets and layouts. 
   Click on a asset name below to edit it or click <code>Remove</code> to delete it.
   
-%p= link_to image_tag('assets/new-asset.png', :alt => 'New Asset'), new_asset_path
+%p#upload= link_to image_tag('assets/new-asset.png', :alt => 'New Asset'), new_asset_path
 
 %p
   - form_tag(assets_url,:id => 'filesearchform', :method => 'get') do
@@ -32,7 +34,7 @@
 #assets_table
   = render :partial => 'asset_table'
   
-= render :partial => 'assets_container'
+=# render :partial => 'assets_container'
   
 - if current_user.admin?
   %p 

@@ -1,6 +1,8 @@
 class AssetsController < ApplicationController
   protect_from_forgery :except => :create
   
+  protect_from_forgery :except => :create
+  
   make_resourceful do 
     actions :all
     response_for :index do |format|
@@ -33,8 +35,12 @@ class AssetsController < ApplicationController
     end
     response_for :create do |format|
       format.html { 
-        flash[:notice] = "Asset successfully uploaded."
-        redirect_to(@page ? page_edit_url(@page) : (params[:continue] ? edit_asset_path(@asset) : assets_path)) 
+        # flash[:notice] = "Asset successfully uploaded." 
+        render :partial => 'assets/asset_table.html.haml', :layout => false
+        # redirect_to(@page ? page_edit_url(@page) : (params[:continue] ? edit_asset_path(@asset) : assets_path)) 
+      } 
+      format.js {
+        render :partial => 'assets/asset_table.html.haml', :layout => false
       }
     end
      
