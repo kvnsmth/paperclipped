@@ -4,7 +4,8 @@ document.observe("dom:loaded", function() {
     name: 'asset[asset]',  
     onComplete: function(file, response){
       // alert(response)
-      $('assets_table').replace(response);
+      $('assets_index').replace(response);
+      new Effect.Highlight('assets_index');
     }
   });     
 });

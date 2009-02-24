@@ -23,7 +23,7 @@ document.observe("dom:loaded", function() {
       }
     });
   });      
-  if($('#asset-bucket')){
+  if($('asset-bucket')){
     new Draggable('asset-bucket', { starteffect: false, endeffect: false });
   }   
   
@@ -43,7 +43,7 @@ Asset.Tabs = Behavior.create({
     
     this.element.addClassName('here');;
     panes.each(function(pane) {Element.hide(pane)});
-    Element.show($(pane));
+    Element.toggle($(pane));
   }
 });
 

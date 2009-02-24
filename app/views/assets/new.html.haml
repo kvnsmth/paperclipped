@@ -1,5 +1,3 @@
-- include_javascript 'admin/assets'   
-- include_javascript 'prototype.ajax_upload.1.0.min.js'
 - include_stylesheet 'admin/assets' 
 
 %h1= "New Asset"
@@ -10,9 +8,7 @@
   
 - form_for :asset, :url => assets_path, :html => { :method => "post", :multipart => true } do |form|
   .form-area 
-    =# render :partial => "form", :locals => { :form => form }  
-    %p#upload
-      Upload a file
+    = render :partial => "form", :locals => { :form => form }  
     %p.upload
       %label.upload Choose a file to upload
       = form.file_field :asset, :class => "", :style => "width: 100%", :id => "assetButton"

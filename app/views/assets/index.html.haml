@@ -1,5 +1,6 @@
 - include_javascript 'prototype.ajax_upload.1.0.min.js'    
 - include_javascript 'admin/upload' 
+
 - include_stylesheet 'admin/assets'
 
 %h1 Assets
@@ -31,10 +32,12 @@
     %input{ :type => "text", :id => "search", :name => "search" }
     = observe_field 'search',  :frequency => 1, :update => 'assets_table', :url =>  { :controller => 'assets', :action=> 'index' }, :method => 'get', :with => "'search=' + escape(value)"
     
+#message
+    
 #assets_table
   = render :partial => 'asset_table'
   
-=# render :partial => 'assets_container'
+= render :partial => 'assets_container'
   
 - if current_user.admin?
   %p 

@@ -1,6 +1,6 @@
 class AssetsController < ApplicationController
-  protect_from_forgery :except => :create
   
+  # Temporary measure until I remember how to send the token with ajax
   protect_from_forgery :except => :create
   
   make_resourceful do 
@@ -16,6 +16,7 @@ class AssetsController < ApplicationController
         end
       }
     end
+    
     after :create do
       if params[:page]
         @page = Page.find(params[:page])
@@ -36,6 +37,8 @@ class AssetsController < ApplicationController
     response_for :create do |format|
       format.html { 
         # flash[:notice] = "Asset successfully uploaded." 
+        @assets = Asset.paginate(:all, :conditions => @conditions, 
+          :order => 'created_at DESC', :page => params[:page], :per_page => 10)
         render :partial => 'assets/asset_table.html.haml', :layout => false
         # redirect_to(@page ? page_edit_url(@page) : (params[:continue] ? edit_asset_path(@asset) : assets_path)) 
       } 
