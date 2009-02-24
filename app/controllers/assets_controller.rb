@@ -37,6 +37,8 @@ class AssetsController < ApplicationController
         # flash[:notice] = "Asset successfully uploaded."
         # redirect_to(@page ? edit_admin_page_url(@page) : (params[:continue] ? edit_asset_path(@asset) : assets_path)) 
         # redirect_to(@page ? page_edit_url(@page) : (params[:continue] ? edit_asset_path(@asset) : assets_path)) 
+        @assets = Asset.paginate(:all, :conditions => @conditions, 
+          :order => 'created_at DESC', :page => params[:page], :per_page => 10)
         render :partial => 'assets/asset_table.html.haml', :layout => false
       } 
       format.js {
