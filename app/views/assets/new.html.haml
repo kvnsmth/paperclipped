@@ -7,11 +7,11 @@
   By clicking on <code>More</code>, you can add a caption as well. 
   
 - form_for :asset, :url => assets_path, :html => { :method => "post", :multipart => true } do |form|
-  .form-area
-    = render :partial => "form", :locals => { :form => form }
+  .form-area 
+    = render :partial => "form", :locals => { :form => form }  
     %p.upload
       %label.upload Choose a file to upload
-      = form.file_field :asset, :class => "", :style => "width: 100%"
+      = form.file_field :asset, :class => "", :style => "width: 100%", :id => "assetButton"
      
     %p.buttons
       = save_model_button(@asset)

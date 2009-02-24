@@ -43,7 +43,7 @@ Asset.Tabs = Behavior.create({
     
     this.element.addClassName('here');;
     panes.each(function(pane) {Element.hide(pane)});
-    Element.show($(pane));
+    Element.toggle($(pane));
   }
 });
 

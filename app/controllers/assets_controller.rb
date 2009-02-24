@@ -1,5 +1,6 @@
 class AssetsController < ApplicationController
   
+  # Temporary measure until I remember how to send the token with ajax
   protect_from_forgery :except => :create
   
   make_resourceful do 
@@ -15,6 +16,7 @@ class AssetsController < ApplicationController
         end
       }
     end
+    
     after :create do
       if params[:page]
         @page = Page.find(params[:page])
