@@ -25,7 +25,7 @@ document.observe("dom:loaded", function() {
   });      
   if($('asset-bucket')){
     new Draggable('asset-bucket', { starteffect: false, endeffect: false });
-  }
+  }   
   
 });
 
