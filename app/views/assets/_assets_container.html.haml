@@ -1,13 +1,15 @@
 - @stylesheets << 'admin/assets'
 - include_javascript 'lowpro'
-- include_javascript 'admin/assets'
 - include_javascript 'dragdrop'
+- include_javascript 'admin/assets'
+- include_javascript 'prototype.ajax_upload.1.0.min.js'   
+- include_javascript 'admin/upload'
 
 #asset-tabs
   - if @page && !@page.new_record? 
     %a.asset-tab.here{ :href => "#bucket" } Bucket
     %a.asset-tab{ :href => "#page-attachments" } Attached Assets
-    %a.asset-tab{ :href => "#upload-assets" } Upload
+    // %a.asset-tab{ :href => "#upload-assets" } Upload
     // %a.asset-tab{ :href => "#search-assets" } Search
   - else
     %a.asset-tab.here{ :href => "#" } Bucket
