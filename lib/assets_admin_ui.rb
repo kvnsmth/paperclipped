@@ -18,8 +18,8 @@ module AssetsAdminUI
               index.preamble.concat %w{header explanation new_button filters}
               index.thead.concat %w{thumbnail_header title_header content_type_header modify_header}
               index.asset_row.concat %w{thumbnail_cell title_cell content_type_cell bucket_cell remove_cell}
-              index.paginate
-              index.assets_container
+              index.pagination.concat %w{pagination}
+              index.assets_container.concat %w{assets_container}
               index.bottom.concat %w{regenerate}
             end
             asset.remove = asset.index

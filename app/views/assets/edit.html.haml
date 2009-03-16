@@ -30,14 +30,14 @@
           or
           = link_to "Cancel", assets_url
 
-  - main.edit_regenerate do
-    - if current_user.admin? or current_user.developer?
-      %p 
-        You can regenerate the asset thumbnails here. Beware that this will take a while and consume considerable resources on your server. 
+    - main.edit_regenerate do
+      - if current_user.admin? or current_user.developer?
+        %p 
+          You can regenerate the asset thumbnails here. Beware that this will take a while and consume considerable resources on your server. 
 
-      - form_tag refresh_assets_path(@asset) do
-        %p.asset-buttons
-          %input.button{ :type => "submit", :value => "Regenerate" }
+        - form_tag refresh_assets_path(@asset) do
+          %p.asset-buttons
+            %input.button{ :type => "submit", :value => "Regenerate" }
 
 
 
