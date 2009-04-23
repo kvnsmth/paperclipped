@@ -69,12 +69,28 @@ class Asset < ActiveRecord::Base
   
   
   order_by 'title'
+  
+  if (storage_type = Radiant::Config["assets.storage.type"]) &&
+      storage_type == "s3"
+    has_attached_file :asset,
+                      :styles => thumbnail_sizes,
+                      :whiny_thumbnails => false,
+                      :path => ":style/:id/:basename:no_original_style.:extension",
+                      :storage => :s3,
+                      :s3_credentials => { 'access_key_id' => Radiant::Config["assets.s3.acces_key_id"],
+                                           'secret_access_key' => Radiant::Config["assets.s3.secret_access_key"] },
+                      :bucket => Radiant::Config["assets.s3.bucket"]
+  else
+    has_attached_file :asset,
+                      :styles => thumbnail_sizes,
+                      :whiny_thumbnails => false,
+                      :url => "/:class/:id/:basename:no_original_style.:extension",
+                      :path => ":rails_root/public/:class/:id/:basename:no_original_style.:extension"
+  end
+  
+
+  
     
-  has_attached_file :asset,
-                    :styles => thumbnail_sizes,
-                    :whiny_thumbnails => false,
-                    :url => "/:class/:id/:basename:no_original_style.:extension",
-                    :path => ":rails_root/public/:class/:id/:basename:no_original_style.:extension"
                                  
   has_many :page_attachments, :dependent => :destroy
   has_many :pages, :through => :page_attachments
