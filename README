@@ -12,7 +12,7 @@ This version of paperclipped adds:
 * named_scope for each of the existing asset categories (images, movies, etc), so that you can get @page.assets.images (audio pluralizes badly to audios, but never mind)
 * an Asset.thumbnail_sizes method that other extensions can use to display the size options
 
-###Installation
+### Installation
 
 To install paperclipped, just run 
  
@@ -21,7 +21,7 @@ To install paperclipped, just run
 
 This runs the database migrations and installs the javascripts, images and css.
 
-###Configuration
+### Configuration
 
 If you install the Settings Extension (highly recommended), you can also easily adjust both the sizes of any additional thumbnails and which thumbnails are displayed in the image edit view. The default is the original file, but any image size can be used by giving in the name of that size. 
 
@@ -37,11 +37,11 @@ You also need the ImageSize gem required in `environment.rb`:
 
 The configuration settings also enable a list of the allowed file types, maximum file size and should you need it, the path to your installation of Image Magick (this should not be needed, but I sometimes had a problem when using mod_rails).
 
-###Using Paperclipped
+### Using Paperclipped
 
 Once installed, you get a new Tab with the entire assets library, a Bucket à la Mephisto (though only the concept is stolen) and a search. You can also easily attach assets to any page and directly upload them to a page.
 
-###Asset Tags
+### Asset Tags
 
 There are a veriety of new tags. The basic tag is the <code><r:assets /></code> tag, which can be used either alone or as a double tag. This tag requires the "title" attribute, which references the asset. If you use the drag and drop from the asset bucket, this title will be added for you. 
 
@@ -88,7 +88,7 @@ Also, for vertical centering of images, you have the handy `<r:assets:top_paddin
       </r:assets:each>
     </ul>
 
-###Migrating from the page_attachments extension
+### Migrating from the page_attachments extension
 
 If you're moving from page_attachments to paperclipped, here's how to migrate smoothly;
 
